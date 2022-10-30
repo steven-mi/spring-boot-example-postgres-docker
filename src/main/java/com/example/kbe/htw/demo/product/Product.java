@@ -25,7 +25,7 @@ public class Product {
     private Float price;
 
     @CsvBindByName
-    private Currency currency;
+    private String currency;
 
     @CsvBindByName
     private String category;
