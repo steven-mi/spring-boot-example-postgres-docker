@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.List;
 
 @Repository
@@ -13,13 +14,21 @@ public class ProductRepository {
 
     private List<Product> foodList;
 
-    public ProductRepository() throws FileNotFoundException {
-        URL url = getClass().getClassLoader().getResource("food.csv");
-        String csv_path = url.getPath().toString();
-        this.foodList = new CsvToBeanBuilder(new FileReader(csv_path))
-                .withType(Product.class)
-                .build()
-                .parse();
+    public ProductRepository() {
+        this.initialiseFoodList();
+    }
+
+    private void initialiseFoodList() {
+        try {
+            URL url = getClass().getClassLoader().getResource("food.csv");
+            String csv_path = url.getPath().toString();
+            this.foodList = new CsvToBeanBuilder(new FileReader(csv_path))
+                    .withType(Product.class)
+                    .build()
+                    .parse();
+        } catch (FileNotFoundException e) {
+            this.foodList = new LinkedList<Product>();
+        }
 
     }
 
