@@ -3,6 +3,8 @@ package com.example.kbe.htw.demo.product;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 
 @Entity
 @NoArgsConstructor
@@ -15,14 +17,18 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank(message = "Name is mandatory")
     private String name;
 
-    private String description;
+    private String description = "";
 
+    @Positive(message = "Price needs to be positive")
     private Float price;
 
+    @NotBlank(message = "Currency is mandatory")
     private String currency;
 
+    @NotBlank(message = "Category is mandatory")
     private String category;
 
 }
