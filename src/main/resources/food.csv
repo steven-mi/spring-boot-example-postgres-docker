@@ -1,6 +1,6 @@
 id,name,description,price,currency,category
-1,Chicken Boneless (ohne Knochen),1) Plain no sauce 2) Sweet chili (Peanut topping) 3) Soy garlic 4) Super spicy 5) Soy wasabi,12.50,EUR,food
-2,Chicken Cuts (mit Knochen),1) Plain no sauce 2) Sweet chili (Peanut topping) 3) Soy garlic 4) Super spicy 5) Soy wasabi,12.00,EUR,food
+1,Chicken Boneless (ohne Knochen),1) Plain no sauce 2) Sweet chili (Peanut topping) 3) Soy garlic 4) Super spicy 5) Soy wasabi,12.50,EUR,restaurant
+2,Chicken Cuts (mit Knochen),1) Plain no sauce 2) Sweet chili (Peanut topping) 3) Soy garlic 4) Super spicy 5) Soy wasabi,12.00,EUR,restaurant
 3,BBQ Beef Fried Dumpling (4 PCS),Beef Dumpling,6.50,EUR,side
 4,Kimchi,Fermented cabbage salad with spices.,3.80,EUR,side
 5,Jinro Toktok Peach,3% alc,7,EUR,drink

@@ -1,4 +1,4 @@
-package com.example.kbe.htw.demo.product;
+package com.example.kbe.htw.demo.food;
 
 import lombok.*;
 
@@ -11,7 +11,7 @@ import javax.validation.constraints.Positive;
 @AllArgsConstructor
 @Builder
 @Data
-public class Product {
+public class Food {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

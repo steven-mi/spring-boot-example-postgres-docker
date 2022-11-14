@@ -1,4 +1,4 @@
-package com.example.kbe.htw.demo.product;
+package com.example.kbe.htw.demo.food;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,8 +16,8 @@ import java.util.Optional;
 
 @Validated
 @RestController
-@RequestMapping("/products")
-public class ProductController {
+@RequestMapping("/food")
+public class FoodController {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -33,30 +33,30 @@ public class ProductController {
     }
 
     @Autowired
-    ProductRepository productRepository;
+    FoodRepository foodRepository;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable(value = "id") Long id) {
-        Optional<Product> product = this.productRepository.findById(id);
+    public ResponseEntity<Food> getFoodById(@PathVariable(value = "id") Long id) {
+        Optional<Food> product = this.foodRepository.findById(id);
         return product.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(product.get());
     }
 
     @GetMapping("")
-    public ResponseEntity<List<Product>> getProducts() {
-        return ResponseEntity.ok(this.productRepository.findAll());
+    public ResponseEntity<List<Food>> getFoods() {
+        return ResponseEntity.ok(this.foodRepository.findAll());
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Product> deleteProductById(@PathVariable(value = "id") Long id) {
-        Optional<Product> product = this.productRepository.findById(id);
-        this.productRepository.deleteById(id);
+    public ResponseEntity<Food> deleteFoodById(@PathVariable(value = "id") Long id) {
+        Optional<Food> product = this.foodRepository.findById(id);
+        this.foodRepository.deleteById(id);
         return product.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(product.get());
 
     }
 
     @PostMapping("")
-    public ResponseEntity<Product> createProduct(@RequestBody @Valid Product product) {
-        Product saved = this.productRepository.save(product);
+    public ResponseEntity<Food> createFood(@RequestBody @Valid Food food) {
+        Food saved = this.foodRepository.save(food);
 
         return ResponseEntity.ok(saved);
     }
