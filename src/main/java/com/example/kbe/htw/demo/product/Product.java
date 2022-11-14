@@ -1,33 +1,28 @@
 package com.example.kbe.htw.demo.product;
 
-import com.opencsv.bean.CsvBindByName;
 import lombok.*;
 
-import java.util.Currency;
+import javax.persistence.*;
 
-@Getter
-@Setter
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Data
 public class Product {
 
-    @CsvBindByName
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    @CsvBindByName
     private String name;
 
-    @CsvBindByName
     private String description;
 
-    @CsvBindByName
     private Float price;
 
-    @CsvBindByName
     private String currency;
 
-    @CsvBindByName
     private String category;
 
 }
