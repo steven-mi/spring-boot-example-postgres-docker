@@ -1,6 +1,11 @@
 package com.example.kbe.htw.demo.food;
 
-import lombok.*;
+import com.example.kbe.htw.demo.restaurant.Restaurant;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -30,5 +35,10 @@ public class Food {
 
     @NotBlank(message = "Category is mandatory")
     private String category;
+
+    @ManyToOne
+    @JoinColumn(name = "restaurant_id", nullable=false)
+    @JsonIgnore
+    private Restaurant restaurant;
 
 }

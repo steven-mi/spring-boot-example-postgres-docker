@@ -2,6 +2,8 @@ package com.example.kbe.htw.demo;
 
 import com.example.kbe.htw.demo.food.Food;
 import com.example.kbe.htw.demo.food.FoodRepository;
+import com.example.kbe.htw.demo.restaurant.Restaurant;
+import com.example.kbe.htw.demo.restaurant.RestaurantRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,14 +17,37 @@ public class DemoApplication {
     }
 
     @Bean
-    public CommandLineRunner demo(FoodRepository repository) {
+    public CommandLineRunner demo(FoodRepository foodRepository, RestaurantRepository restaurantRepository) {
         return (args) -> {
-            // save a few customers
-            repository.save(new Food(1L, "Chicken Boneless (ohne Knochen)", "1) Plain no sauce 2) Sweet chili (Peanut topping) 3) Soy garlic 4) Super spicy 5) Soy wasabi", 12.50F, "EUR", "food"));
-            repository.save(new Food(2L, "Chicken Cuts (mit Knochen)", "1) Plain no sauce 2) Sweet chili (Peanut topping) 3) Soy garlic 4) Super spicy 5) Soy wasabi", 12.00F, "EUR", "food"));
-            repository.save(new Food(3L, "Beef Dumpling", "BBQ Beef Fried Dumpling (4 PCS)", 6.50F, "EUR", "side"));
+            Restaurant restaurant = restaurantRepository.save(Restaurant.builder().name("Kokio").build());
+            foodRepository.save(Food
+                    .builder()
+                    .name("Chicken Boneless (ohne Knochen)")
+                    .description("1) Plain no sauce 2) Sweet chili (Peanut topping) 3) Soy garlic 4) Super spicy 5) Soy wasabi")
+                    .currency("EUR")
+                    .category("food")
+                    .price(12.50F)
+                    .restaurant(restaurant)
+                    .build());
+            foodRepository.save(Food
+                    .builder()
+                    .name("Chicken Cuts (mit Knochen)")
+                    .description("1) Plain no sauce 2) Sweet chili (Peanut topping) 3) Soy garlic 4) Super spicy 5) Soy wasabi")
+                    .currency("EUR")
+                    .category("food")
+                    .price(12.00F)
+                    .restaurant(restaurant)
+                    .build());
+            foodRepository.save(Food
+                    .builder()
+                    .name("Beef Dumpling")
+                    .description("BBQ Beef Fried Dumpling (4 PCS)")
+                    .currency("EUR")
+                    .category("side")
+                    .price(6.50F)
+                    .restaurant(restaurant)
+                    .build());
         };
-
     }
 
 
