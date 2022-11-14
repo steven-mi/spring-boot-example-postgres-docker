@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @Validated
 @RestController
-@RequestMapping("/food")
+@RequestMapping("/foods")
 public class FoodController {
 
     @Autowired
