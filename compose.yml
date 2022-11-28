@@ -1,0 +1,37 @@
+version: '3.9'
+services:
+  food_service:
+    container_name: food_service
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      food_db:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://food_db:5432/db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.PostgreSQLDialect
+      - SPRING_JPA_HIBERNATE_DDL-AUTO=update
+    ports:
+      - 8080:8080
+
+  food_db:
+    image: 'postgres:latest'
+    container_name: food_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: db
+      PGDATA: /data/postgres
+    volumes:
+      - ./data:/data/postgres
+    expose:
+      - '5432'
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5

@@ -2,6 +2,14 @@
 
 ## Getting Started
 
+### Start locally with Docker
+
+```bash
+docker-compose up
+```
+
+### Start locally without Docker
+
 **Start DB with Docker**
 
 ```bash
