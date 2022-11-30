@@ -2,6 +2,20 @@
 
 ## Getting Started
 
+### Start locally with Docker
+
+```bash
+docker-compose up
+```
+
+### Run tests
+
+```bash
+mvn clean package -Dspring-boot.run.profiles=test
+```
+
+### Start locally without Docker
+
 **Start DB with Docker**
 
 ```bash
