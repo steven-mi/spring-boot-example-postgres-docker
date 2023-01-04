@@ -1,8 +1,10 @@
-# Demo Project
+# Spring Boot Service Example
+
+Example of a small Spring Boot service using Docker, docker-compose, postgresql. This example involves using Spring MVC Testing for basic controller testing, which can be extended to integration or end2end testing by using docker-compose.
 
 ## Getting Started
 
-### Start locally with Docker
+### Start locally with docker-compose
 
 ```bash
 docker-compose up
@@ -14,7 +16,7 @@ docker-compose up
 mvn clean package -Dspring-boot.run.profiles=test
 ```
 
-### Start locally without Docker
+### Start locally without docker-compose
 
 **Start DB with Docker**
 
